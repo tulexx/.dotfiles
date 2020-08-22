@@ -1,0 +1,127 @@
+"
+" General settings
+"
+
+" Fix the escape delay
+set timeoutlen=1000 ttimeoutlen=0
+
+" Show commands in the status bar
+set showcmd
+
+" Completion in : commands
+set wildmenu
+
+" Ruler in the status menu
+set ruler
+
+" Tab indent is 4 spaces
+set tabstop=2
+
+" When indenting use 4 spaces
+set shiftwidth=2
+
+" Indent in a smart way
+set autoindent
+
+" Expand tabs to spaces
+set expandtab
+
+" Highlight all matches in text when searching
+set hlsearch
+
+" Search incrementally as you type
+set incsearch
+
+" Show matches for braces, parenthesis and such
+set showmatch
+
+" Ignore case when searching
+set ignorecase
+
+" Override ignorecase when pattern has upper case characters
+set smartcase
+
+" Set numbers and relative numbers
+set number
+set relativenumber
+
+" Wrap visually but don't insert line breaks
+set wrap
+set textwidth=0
+set wrapmargin=0
+
+" Make backspace behave normally
+set backspace=2
+
+"
+" Keyboard remapping
+"
+
+" Change leader key to comma (,)
+let mapleader=","
+
+" Change local leader to (\)
+let maplocalleader="\\"
+
+" Change undo and redo"
+nnoremap u :action $Undo<cr>
+vnoremap u <esc>:action $Undo<cr>
+nnoremap <c-r> :action $Redo<cr>
+
+" Vertical split
+nnoremap <leader>\ :action SplitVertically<cr>
+nnoremap <leader>- :action SplitHorizontally<cr>
+nnoremap <leader>l :action NextSplitter<cr>
+nnoremap <leader>j :action NextSplitter<cr>
+nnoremap <leader>h :action PrevSplitter<cr>
+nnoremap <leader>k :action PrevSplitter<cr>
+nnoremap <c-l> :action NextSplitter<cr>
+nnoremap <c-h> :action PrevSplitter<cr>
+
+" Show git blame
+nnoremap <leader>y :action Annotate<cr>
+
+" Close tab with ctrl-w
+nnoremap <c-w> :q<cr>
+
+" Same as Ctrl+left mouse and Ctrl+right mouse
+nnoremap <c-j> :action GotoDeclaration<cr>
+nnoremap <c-k> :action Back<cr>
+
+" Remove highlights with leader + enter
+nnoremap <Leader><CR> :nohlsearch<cr>
+
+" Move line down the file
+nnoremap <leader>_ ddp
+
+" Delete line in insert mode
+inoremap <c-d> <esc>ddi
+
+" Edit my ideavimrc
+nnoremap <leader>ev :e ~/.ideavimrc<cr>
+
+" Source my ideavimrc
+nnoremap <leader>sv :source ~/.ideavimrc<cr>
+
+" Surround word in ".."
+nnoremap <leader>' viw<esc>bi"<esc>ea"<esc>
+
+" Surround word in '..'
+nnoremap <leader>' viw<esc>bi'<esc>ea'<esc>
+
+" Remap jk to <esc>
+inoremap jk <esc>
+inoremap fd <esc>
+" inoremap <esc> <nop>
+
+" Copy to clipboard
+vnoremap <C-C> "+y
+
+" Compare git branch
+nnoremap <leader>com :action Git.CompareWithBranch<cr>
+
+" Generate things
+nnoremap <leader>gen :action Generate<cr>
+
+" Toggle whitespace
+nnoremap <leader>w :action EditorToggleShowWhitespaces<cr>
