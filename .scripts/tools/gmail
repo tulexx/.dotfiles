@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+username="marcin.tula@gmail.com"
+password="fizrcbevckmhkjzm"
+
+data=$(curl -u "$username:$password" --silent "https://mail.google.com/mail/feed/atom")
+
+number=$(echo "$data" | sed 's/xmlns=".*#"//g' | xmllint --xpath '//fullcount/text()' - 2>/dev/null)
+
+if [ -n "$number" ]
+then
+  echo " $number"
+fi

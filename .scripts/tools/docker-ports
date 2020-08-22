@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+if [[ -z $(which docker) ]]
+then
+    echo -e "\033[0;31mYou need docker installed\033[0m"
+    exit 1
+fi
+
+zeroIp='0\.0\.0\.0'
+
+docker ps -a --format "{{.ID}} {{.Names}} {{.Ports}}" | grep $zeroIp | while read c
+do
+    container=$(echo $c | awk '{ print $1 }')
+    name=$(echo $c | awk '{print $2 }')
+    ports=$(echo $c | sed -e "s/$container//g; s/$name//g")
+
+    line=''
+
+    for p in $ports
+    do
+        if [[ ! -z $(echo $p | grep $zeroIp) ]]
+        then
+            port=$(echo $p | sed -e "s/$zeroIp//g; s/://g; s/->.*$//g")
+            line="$line $port"
+        fi
+    done
+
+    line="$line => $name"
+    echo $line
+done | sort
