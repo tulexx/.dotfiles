@@ -2,12 +2,13 @@
 
 # Source aliases so that they are included in search
 source $HOME/.local/bashrc.d/aliases.sh
+source $HOME/.local/bashrc.d/dotfiles.sh
 
 [[ -z $1 ]] && exit 1
 
 cmd="$1"
 
-[[ -z $(command -v $cmd) ]] && exit 1
+[[ -z $(command -v "$cmd") ]] && exit 1
 
 command -v $cmd
 
