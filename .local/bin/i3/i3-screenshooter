@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+fullFilename="/tmp/screenshot_$(date +%F_%T).png"
+screenshotCmd="scrot --silent $fullFilename -e 'xclip -selection c -t image/png < $fullFilename'"
+
+declare -A options
+
+options=(
+  [ Full]=""
+  [ Select]="--select"
+  [ Current window]="--focused"
+)
+
+selection=$(printf '%s\n' "${!options[@]}" | rofi -dmenu -i -lines ${#options[@]} -p 'Screenshot')
+
+[[ -z $selection ]] && exit 0;
+
+eval "$screenshotCmd ${options[$selection]}"
+
+notify-send "Screenshot copied"
+
+feh $fullFilename

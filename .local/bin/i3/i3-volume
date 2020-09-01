@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+
+action="$1"
+
+if [[ -z "$mixer" ]] ; then
+  mixer="default"
+  if command -v pulseaudio >/dev/null 2>&1 && pulseaudio --check ; then
+    # pulseaudio is running, but not all installations use "pulse"
+    if amixer -D pulse info >/dev/null 2>&1 ; then
+      mixer="pulse"
+    fi
+  fi
+  [ -n "$(lsmod | grep jack)" ] && mixer="jackplug"
+  mixer="${2:-$mixer}"
+fi
+
+step="${3:-5%}"
+
+scontrol=$(amixer -D "$mixer" scontrols | sed -nE "s/Simple mixer control '([A-Za-z ]*)',0/\1/p" | head -n1)
+
+capability() { # Return "Capture" if the device is a capture device
+  amixer -D "$mixer" get "$scontrol" |
+    sed -n "s/  Capabilities:.*cvolume.*/Capture/p"
+}
+
+get_volume() {
+  amixer -D "$mixer" get "$scontrol" "$(capability)"
+}
+
+format() {
+  sed -nE '6p' | sed -E 's/\[|\]|%//g' | awk '{
+    if ($6 == "off") text="";
+    else if ($5 == 0) text="";
+    else if ($5 < 60) text=" "$5"%";
+    else text=" "$5"%";
+    print text;
+  }'
+  # perl_filter='if (/.*\[(\d+%)\] (\[(-?\d+.\d+dB)\] )?\[(on|off)\]/)'
+  # perl_filter+='{CORE::say $4 eq "off" ? "" : "'
+  # # If dB was selected, print that instead
+  # perl_filter+=$([[ "$step" = *dB ]] && echo "$3" || echo "$1")
+  # perl_filter+='"; exit}'
+  # output=$(perl -ne "$perl_filter")
+  # echo "$LABEL$output"
+}
+
+mute_toggle() {
+  amixer -q -D "$mixer" sset "$scontrol" "$(capability)" toggle
+}
+
+volume_up() {
+  amixer -q -D "$mixer" sset "$scontrol" "$(capability)" "$step"+ unmute
+}
+
+volume_down() {
+  amixer -q -D "$mixer" sset "$scontrol" "$(capability)" "$step"- unmute
+}
+
+case $action in
+  toggle) mute_toggle;;
+  +) volume_up;;
+  -) volume_down;;
+esac
+
+pkill -RTMIN+10 i3blocks
+
+get_volume | format

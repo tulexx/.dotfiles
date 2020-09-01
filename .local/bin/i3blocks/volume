@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+volume="$(i3-volume)"
+
+case $BLOCK_BUTTON in
+  3) volume="$(i3-volume toggle)" ;;  # right click, mute/unmute
+  4) volume="$(i3-volume +)" ;; # scroll up, increase
+  5) volume="$(i3-volume -)" ;; # scroll down, decrease
+esac
+
+echo "$volume"

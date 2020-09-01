@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+declare -A options
+
+options=(
+  [ Lock]="i3-lock"
+  [ Logout]="i3-logout --force"
+  [ Reboot]="systemctl reboot"
+  [ Suspend]="i3-lock && systemctl suspend"
+  [ Shutdown]="systemctl poweroff"
+)
+
+selection=$(printf '%s\n' "${!options[@]}" | rofi -dmenu -i -lines ${#options[@]} -p 'Choose')
+
+[[ -z $selection ]] && exit 0;
+
+eval ${options[$selection]}

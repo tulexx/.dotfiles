@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+configFolder="$HOME/.config/monitors/" 
+
+files=($(find "$configFolder" -type f -printf '%P\n'))
+
+selection=$(printf '%s\n' "${files[@]}" | sed -E 's/.sh//g; s/_/ /g' | rofi -dmenu -i -lines ${#files[@]} -p 'Monitors')
+
+[[ -z $selection ]] && exit 0
+
+"$configFolder$(echo "$selection" | sed -E 's/ /_/g').sh"
+
+notify-send "Changed monitor configuration"

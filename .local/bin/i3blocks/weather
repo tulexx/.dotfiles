@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+data=($(curl -s wttr.in?format=%C:%t | sed 's/:/ /g'))
+
+weather=${data[*]::${#data[*]}-1}
+temp=${data[${#data[@]}-1]}
+
+text="$temp"
+
+case $weather in
+  Sunny)
+    text=" $text"
+  ;;
+  "Partly cloudy")
+    text="  $text"
+  ;;
+  Clear);;
+  *) text="$weather $text";;
+esac
+
+echo "$text"
