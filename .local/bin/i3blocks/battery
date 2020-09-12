@@ -2,7 +2,9 @@
 
 COMMAND=acpi
 
-command -v "${COMMAND}" > /dev/null 2>&1 || (echo "<span color='red'>${COMMAND^^} NOT PRESENT</span>" && exit 1)
+command -v "${COMMAND}" > /dev/null 2>&1 || {
+  echo "<span color='red'>${COMMAND^^} NOT PRESENT</span>" && exit
+}
 
 message=$(${COMMAND} | awk '{
   gsub(/,/, "");

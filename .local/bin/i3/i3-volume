@@ -26,12 +26,15 @@ get_volume() {
 }
 
 format() {
-  awk 'NR==5{
+  awk 'NR==5,NR==6{
     gsub(/\[/,"");
     gsub(/\]/,"");
     gsub(/%/,"");
-    percentage = $4;
 
+    if (!$6)
+      next;
+
+    percentage = $1 == "Front" ? $5 : $4;
     if ($6 == "off" || percentage == 0) text="";
     else if (percentage < 60) text=" " percentage "%";
     else text=" " percentage "%";

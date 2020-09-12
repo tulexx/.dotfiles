@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+COMMAND="pass"
+PASSWORD_COMMAND="${COMMAND} gmail"
+
+command -v "${COMMAND}" > /dev/null 2>&1 || {
+  echo "<span color='red'>${COMMAND^^} NOT PRESENT</span>" &&
+    exit
+}
+
+${PASSWORD_COMMAND} > /dev/null 2>&1 ||
+{
+  echo "<span color='red'>Need to set up '${PASSWORD_COMMAND}'</span>" &&
+    exit
+} 
+
+username="marcin.tula@gmail.com"
+password="$(${PASSWORD_COMMAND})"
+
+data=$(curl -u "$username:$password" --silent "https://mail.google.com/mail/feed/atom")
+
+number=$(echo "$data" | sed 's/xmlns=".*#"//g' | xmllint --xpath '//fullcount/text()' - 2>/dev/null)
+
+([ -z "$number" ] || [ "$number" -eq 0 ]) && exit
+
+open_browser() {
+  chromium-browser --profile-directory=Default --new-window mail.google.com >/dev/null
+}
+
+case $BLOCK_BUTTON in
+  1) open_browser ;;
+esac
+
+echo "<span color='red'> $number</span>"
