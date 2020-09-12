@@ -2,17 +2,15 @@
 
 action="$1"
 
-if [[ -z "$mixer" ]] ; then
-  mixer="default"
-  if command -v pulseaudio >/dev/null 2>&1 && pulseaudio --check ; then
-    # pulseaudio is running, but not all installations use "pulse"
-    if amixer -D pulse info >/dev/null 2>&1 ; then
-      mixer="pulse"
-    fi
+mixer="default"
+if command -v pulseaudio >/dev/null 2>&1 && pulseaudio --check ; then
+  # pulseaudio is running, but not all installations use "pulse"
+  if amixer -D pulse info >/dev/null 2>&1 ; then
+    mixer="pulse"
   fi
-  [ -n "$(lsmod | grep jack)" ] && mixer="jackplug"
-  mixer="${2:-$mixer}"
 fi
+[ -n "$(lsmod | grep jack)" ] && mixer="jackplug"
+mixer="${2:-$mixer}"
 
 step="${3:-5%}"
 
@@ -28,20 +26,17 @@ get_volume() {
 }
 
 format() {
-  sed -nE '6p' | sed -E 's/\[|\]|%//g' | awk '{
-    if ($6 == "off") text="";
-    else if ($5 == 0) text="";
-    else if ($5 < 60) text=" "$5"%";
-    else text=" "$5"%";
+  awk 'NR==5{
+    gsub(/\[/,"");
+    gsub(/\]/,"");
+    gsub(/%/,"");
+    percentage = $4;
+
+    if ($6 == "off" || percentage == 0) text="";
+    else if (percentage < 60) text=" " percentage "%";
+    else text=" " percentage "%";
     print text;
   }'
-  # perl_filter='if (/.*\[(\d+%)\] (\[(-?\d+.\d+dB)\] )?\[(on|off)\]/)'
-  # perl_filter+='{CORE::say $4 eq "off" ? "" : "'
-  # # If dB was selected, print that instead
-  # perl_filter+=$([[ "$step" = *dB ]] && echo "$3" || echo "$1")
-  # perl_filter+='"; exit}'
-  # output=$(perl -ne "$perl_filter")
-  # echo "$LABEL$output"
 }
 
 mute_toggle() {

@@ -5,16 +5,18 @@ COMMAND=acpi
 command -v "${COMMAND}" > /dev/null 2>&1 || (echo "<span color='red'>${COMMAND^^} NOT PRESENT</span>" && exit 1)
 
 message=$(${COMMAND} | awk '{
-  sub(/,/, "", $3);
-  sub(/%,/, "", $4);
+  gsub(/,/, "");
+  gsub(/%/, "");
   message = "";
   status = $3;
   capacity = $4;
   color = "white";
   split($5,split_time,":");
-  if (status == "Full")
-    message "";
-  else {
+  time = " (" split_time[1] ":" split_time[2] ")"
+  if (status == "Full") {
+    message = "";
+    time = "";
+  } else {
     if (status == "Charging")
       message = "  ";
 
@@ -35,7 +37,7 @@ message=$(${COMMAND} | awk '{
     }
   }
 
-  message = message " (" split_time[1] ":" split_time[2] ")"
+  message = message time
   print "<span color=\"" color "\">" message "</span>"
 }')
 
