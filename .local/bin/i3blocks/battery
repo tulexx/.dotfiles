@@ -1,54 +1,42 @@
 #!/usr/bin/env bash
 
-DIRECTORY="/sys/class/power_supply/BAT0"
+COMMAND=acpi
 
-get_time() {
-  echo "scale=5; $1 / $2" | bc | awk '{printf "%02d:%02d", $1, ($1-int($1)) * 60}'
-}
+command -v "${COMMAND}" > /dev/null 2>&1 || (echo "<span color='red'>${COMMAND^^} NOT PRESENT</span>" && exit 1)
 
-get_message() {
-  local capacity="$1"
-  local battery="$2"
+message=$(${COMMAND} | awk '{
+  sub(/,/, "", $3);
+  sub(/%,/, "", $4);
+  message = "";
+  status = $3;
+  capacity = $4;
+  color = "white";
+  split($5,split_time,":");
+  if (status == "Full")
+    message "";
+  else {
+    if (status == "Charging")
+      message = "  ";
 
-  local message=""
+    if (capacity < 10) {
+      message = message "  " capacity "%";
+      color = "#ff0000";
+    } else if (capacity < 40) {
+      message = message "  " capacity "%";
+      color = "#ffae00";
+    } else if (capacity < 60) {
+      message = message "  " capacity "%";
+      color = "#fff600";
+    } else if (capacity < 85) {
+      message = message "  " capacity "%";
+      color = "#a8ff00";
+    } else {
+      message = message "  " capacity "%";
+    }
+  }
 
-  status=$(cat "$DIRECTORY/status")
-  charge_now=$(cat "$DIRECTORY/charge_now")
-  charge_full=$(cat "$DIRECTORY/charge_full")
-  current_now=$(cat "$DIRECTORY/current_now" 2>/dev/null || echo 1)
+  message = message " (" split_time[1] ":" split_time[2] ")"
+  print "<span color=\"" color "\">" message "</span>"
+}')
 
-  if [ "$status" = "Full" ]; then
-    message=""
-  elif [ "$status" = "Charging" ]; then
-    time=$(get_time "$current_now" "$charge_full")
-    message=" $capacity% ($time)"
-  elif [ "$status" = "Discharging" ]; then
-    time=$(get_time "$charge_now" "$current_now")
-    message="$battery $capacity% ($time)"
-  elif [ "$status" = "Unknown" ]; then
-    message="$battery $capacity%"
-  fi
-
-  echo "$message"
-}
-
-capacity=$(cat "$DIRECTORY/capacity")
-
-if [ "$capacity" -lt 10 ]; then
-  battery=" "
-  color=#ff0000
-elif [ "$capacity" -lt 40 ]; then
-  battery=" "
-  color=#ffae00
-elif [ "$capacity" -lt 60 ]; then
-  battery=" "
-  color=#fff600
-elif [ "$capacity" -lt 85 ]; then
-  battery=" "
-  color=#a8ff00
-else
-  battery=" "
-  color=white
-fi
-
-echo "<span color='$color'>$(get_message "$capacity" "$battery")</span>"
+echo "${message}"
