@@ -17,6 +17,7 @@ alias \
   gl="git log" \
   gp="git push" \
   glist="git stash list"
+  vim="nvim"
 
 # Private aliases
 privateAliases="$HOME/.bash_private_aliases"
