@@ -1,0 +1,32 @@
+{
+  "telemetry.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false,
+  "vs-kubernetes": {
+    "vs-kubernetes.helm-path.linux": "/home/tulexx/.vs-kubernetes/tools/helm/linux-amd64/helm",
+    "vs-kubernetes.draft-path.linux": "/home/tulexx/.vs-kubernetes/tools/draft/linux-amd64/draft",
+    "vs-kubernetes.minikube-path.linux": "/home/tulexx/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
+  },
+  "vscode-neovim.highlightGroups.highlights": {
+
+    "Directory": "vim",
+    "IncSearch": {
+      "backgroundColor": "theme.editor.findMatchBackground",
+      "borderColor": "theme.editor.findMatchBorder"
+    },
+    "Search": {
+      "backgroundColor": "theme.editor.findMatchHighlightBackground",
+      "borderColor": "theme.editor.findMatchHighlightBorder"
+    },
+    "Visual": {
+      "backgroundColor": "theme.editor.selectionBackground"
+    },
+    "Conceal": "vim",
+    "Substitute": "vim"
+  },
+  "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
+  "files.autoSave": "afterDelay",
+  "workbench.colorTheme": "Darcula",
+  "editor.minimap.enabled": false,
+  "breadcrumbs.enabled": false,
+  "editor.renderWhitespace": "none"
+}
