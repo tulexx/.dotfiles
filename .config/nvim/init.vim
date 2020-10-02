@@ -75,6 +75,9 @@ set timeoutlen=1000 ttimeoutlen=0
 " Turn on syntax highlighting and Explorer
 syntax enable
 
+" Same clipboard as system
+set clipboard+=unnamedplus
+
 " Show mode in the status bar
 set showmode
 
