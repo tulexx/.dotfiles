@@ -87,17 +87,23 @@ set showcmd
 " Completion in : commands
 set wildmenu
 
+" Autocompletion
+set wildmode=longest,list,full
+
 " Ruler in the status menu
 set ruler
 
 " Turn on man pages
 runtime ftplugin/man.vim
 
-" Tab indent is 4 spaces
+" Tab indent is 2 spaces
 set tabstop=2
 
-" When indenting use 4 spaces
+" When indenting use 2 spaces
 set shiftwidth=2
+
+" Go back with the tab number
+set softtabstop=2
 
 " Indent in a smart way
 set autoindent
