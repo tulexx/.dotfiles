@@ -8,5 +8,5 @@
 
 for FN in $HOME/.local/profile.d/*.sh
 do
-    source "$FN"
+    . "$FN"
 done

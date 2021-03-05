@@ -7,7 +7,7 @@
 
 for FN in $HOME/.local/bashrc.d/*.sh
 do
-    source "$FN"
+    . "$FN"
 done
 
 export BASH_RC_LOADED=true
