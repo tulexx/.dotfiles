@@ -5,7 +5,7 @@
 # /_.___/\__,_/____/_/ /_/_/   \___/
 #
 
-for FN in $HOME/.local/bashrc.d/*.sh
+for FN in $HOME/.local/bashrc.d/*.bashrc
 do
     . "$FN"
 done
