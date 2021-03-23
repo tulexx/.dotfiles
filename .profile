@@ -6,7 +6,7 @@
 # /_/
 #
 
-for FN in $HOME/.local/profile.d/*.sh
+for FN in $HOME/.local/profile.d/*.profile
 do
-    source "$FN"
+    . "$FN"
 done
