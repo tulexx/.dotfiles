@@ -9,6 +9,7 @@ options=(
   [ Full]=""
   [ Select]="--select"
   [ Current window]="--focused"
+  [ Select with 5s delay]="--select --delay 5"
 )
 
 selection=$(printf '%s\n' "${!options[@]}" | rofi -dmenu -i -lines ${#options[@]} -p 'Screenshot')
