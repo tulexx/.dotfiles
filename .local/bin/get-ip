@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
 
-ip route get 8.8.8.8 | awk -F"src " 'NR==1{split($2,a," ");print a[1]}'
+main=$(ip route get 8.8.8.8 | awk -F"src " 'NR==1{split($2,a," ");print a[1]}')
+
+ip a | grep 'inet ' | grep -E '(enp.*|wlp.*|enx.*|tun.*)$' | sed 's/\/[0-9]*//g' | awk '{ print $2" "$NF }' | grep -E "^|${main}" --color='always'
+

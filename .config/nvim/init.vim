@@ -60,6 +60,8 @@ Plug 'noahfrederick/vim-composer' " Composer integration
 Plug 'mattn/emmet-vim' "Emmet for vim
 Plug 'vim-syntastic/syntastic' " Syntax chechking
 
+Plug 'gabrielelana/vim-markdown'
+
 call plug#end()
 
 " }}}
@@ -310,6 +312,14 @@ au Filetype html setlocal ts=4 sw=4 expandtab
 au Filetype php setlocal autoindent ts=4 sw=4 expandtab omnifunc=phpcomplete#CompletePHP
 au Filetype markdown setlocal nonu nornu
 au Filetype javascript setlocal autoindent ts=4 sw=4 expandtab
+" }}}
+
+" Ssh config file settings ---{{{
+augroup filetype_sshconfig
+        autocmd!
+        autocmd FileType sshconfig setlocal foldmethod=marker
+        autocmd FileType sshconfig :highlight Folded ctermbg=grey ctermfg=black
+augroup END
 " }}}
 
 " Vimscript file settings ---{{{

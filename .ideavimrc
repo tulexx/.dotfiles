@@ -88,6 +88,9 @@ nnoremap <c-w> :q<cr>
 nnoremap <c-j> :action GotoDeclaration<cr>
 nnoremap <c-k> :action Back<cr>
 
+" Same as Ctrl+Alt+Left mouse
+nnoremap <c-A-j> :action GotoImplementation<cr>
+
 " Remove highlights with leader + enter
 nnoremap <Leader><CR> :nohlsearch<cr>
 
