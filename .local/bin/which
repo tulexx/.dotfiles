@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Source aliases so that they are included in search
-source $HOME/.local/bashrc.d/aliases.sh
-source $HOME/.local/bashrc.d/dotfiles.sh
+source $HOME/.local/bashrc.d/aliases.bashrc
+source $HOME/.local/bashrc.d/dotfiles.bashrc
 
 [[ -z $1 ]] && exit 1
 

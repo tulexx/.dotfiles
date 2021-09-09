@@ -19,7 +19,7 @@ set $ws10 "10"
 
 workspace $ws1 output primary
 workspace $ws2 output DVI-I-1-1 primary
-workspace $ws3 output DP1 secondary primary
+workspace $ws3 output HDMI-2 secondary primary
 workspace $ws4 output DVI-I-1-1 primary
 workspace $ws5 output DVI-I-1-1 primary
 workspace $ws6 output DVI-I-1-1 primary
@@ -41,8 +41,8 @@ no_focus [class="java-lang-Thread" title="win0"]
 no_focus [class="Chromium-browser"]
 
 exec --no-startup-id nm-applet --sm-disable
-exec --no-startup-id dropbox start
-exec --no-startup-id $HOME/.fehbg &
+#exec --no-startup-id dropbox start
+#exec --no-startup-id $HOME/.fehbg &
 
 font pango:DejaVu Sans Mono 9
 # font pango:monospace 9
