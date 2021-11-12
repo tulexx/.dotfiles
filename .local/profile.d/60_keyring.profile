@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 if [ -x /usr/bin/gnome-keyring-daemon ]
 then
     if [ -n "$DESKTOP_SESSION" ]

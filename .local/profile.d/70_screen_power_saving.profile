@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # turn off screensaver
 xset s off
 

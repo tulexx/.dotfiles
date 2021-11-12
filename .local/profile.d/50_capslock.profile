@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # make CapsLock behave like Ctrl:
 [ -x /usr/bin/setxkbmap ] && /usr/bin/setxkbmap -option ctrl:nocaps
 
