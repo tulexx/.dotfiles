@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=xkill
+Comment=Starts xkill
+Icon=utilities-terminal
+Terminal=false
+Exec=xkill
+Categories=System

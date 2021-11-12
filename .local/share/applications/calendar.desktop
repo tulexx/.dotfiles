@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=calendar
+Comment=Launches calendar window
+Icon=utilities-terminal
+Terminal=false
+Exec=yad --calendar
+Categories=System
