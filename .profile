@@ -6,12 +6,6 @@
 # /_/
 #
 
-# If profile is loaded, do nothing (return, because of sourcing)
-[ "${PROFILE_LOADED}" = "true" ] && return
-
-# $HOME/.local/profile.d contains files to source.
-# Prefix with number to set sourcing order.
-
 for FN in "$HOME/.local/profile.d/"*.profile
 do
     . "$FN"

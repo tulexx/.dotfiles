@@ -5,10 +5,10 @@
 # /_.___/\__,_/____/_/ /_/_/   \___/
 #
 
-# If bashrc is loaded, do nothing (return, because of sourcing)
-[ "${BASH_RC_LOADED}" = "true" ] && return
+# It is sourced every time $HOME/.profile is sourced
+# e.g. in tmux
 
-# $HOME/.local/bashrc.d contains files to source.
+# $HOME/.local/bashrc.d contains files to load.
 # Prefix with number to set sourcing order.
 
 for FN in "$HOME/.local/bashrc.d"/*.bashrc
