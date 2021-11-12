@@ -1,3 +1,5 @@
+SCRIPT_SHELL=$(readlink /proc/$$/exe) && [ "${SCRIPT_SHELL#/usr/bin/}" != "bash" ] && return # not bash 
+
 git_branch() {
     # -- Finds and outputs the current branch name by parsing the list of
     #    all branches

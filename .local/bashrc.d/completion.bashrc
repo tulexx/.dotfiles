@@ -1,3 +1,6 @@
+SCRIPT_SHELL=$(readlink /proc/$$/exe) && [ "${SCRIPT_SHELL#/usr/bin/}" != "bash" ] && return # not bash 
+
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).

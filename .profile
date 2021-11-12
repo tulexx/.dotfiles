@@ -10,3 +10,5 @@ for FN in $HOME/.local/profile.d/*.profile
 do
     . "$FN"
 done
+
+export PROFILE_LOADED=true

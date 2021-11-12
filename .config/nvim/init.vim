@@ -1,4 +1,92 @@
+" Keyboard remapping ---{{{
+
+" Change leader key to comma (,)
+let mapleader=","
+
+" Change local leader to (\)
+let maplocalleader="\\"
+
+" Remove highlights with leader + enter
+nnoremap <Leader><CR> :nohlsearch<cr>
+
+" Move line down the file
+nnoremap <leader>_ ddp
+
+" Move line up a file
+nnoremap <leader>- ddkP
+
+" Delete line in insert mode
+inoremap <c-d> <esc>ddi
+
+" Edit my vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" Source my vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Surround word in ".."
+nnoremap <leader>" viW<esc>a"<esc>hbi"<esc>lel
+
+" Surround word in '..'
+nnoremap <leader>' viW<esc>a'<esc>hbi'<esc>lel
+
+" Remap jk to <esc>
+inoremap jk <esc>
+inoremap fd <esc>
+" inoremap <esc> <nop>
+
+" Navigate between splits with leader
+nnoremap <leader>h <c-w><c-h>
+nnoremap <leader>j <c-w><c-j>
+nnoremap <leader>k <c-w><c-k>
+nnoremap <leader>l <c-w><c-l>
+
+" Copy to clipboard
+vnoremap <C-C> "+y
+
+" Disable Ex mode
+nnoremap Q <nop>
+
+" Easier exiting
+" nnoremap <leader>q :q<cr>
+" nnoremap <leader>Q :q!<cr>
+
+" Reload syntax highlighting
+nnoremap <leader>r :syntax sync fromstart<cr>
+
+" Omnicompletion on <c-o>
+inoremap <c-o> <c-x><c-o>
+
+" :W for write with sudo
+command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+command! Wtest :execute 'w !sudo tee % > /dev/null' | :edit!
+
+" %%/ as current directory
+cabbr <expr> %% expand('%:p:h')
+
+" Fugitive git bindings
+nnoremap <space>ga :Git add %:p<cr><cr>
+nnoremap <space>gs :Gstatus<cr>
+"nnoremap <space>gc :Gcommit -v -q<cr>
+"nnoremap <space>gt :Gcommit -v -q %:p<cr>
+"nnoremap <space>gd :Gdiff<cr>
+"nnoremap <space>ge :Gedit<cr>
+"nnoremap <space>gr :Gread<cr>
+"nnoremap <space>gw :Gwrite<cr><cr>
+"nnoremap <space>gl :silent! Glog<cr>:bot copen<cr>
+"nnoremap <space>gp :Ggrep<space>
+"nnoremap <space>gm :Gmove<space>
+"nnoremap <space>gb :Git branch<space>
+"nnoremap <space>go :Git checkout<space>
+"nnoremap <space>gps :Dispatch! git push<cr>
+"nnoremap <space>gpl :Dispatch! git pull<cr>
+
+
+" }}}
+
 if !exists('g:vscode')
+" Keyboard remapping ---{{{
+" }}}
 " vim-plug settings and plugins ------{{{
 
 set nocompatible " required
@@ -166,91 +254,6 @@ set completeopt=longest,menuone
 
 " }}}
 
-" Keyboard remapping ---{{{
-
-" Change leader key to comma (,)
-let mapleader=","
-
-" Change local leader to (\)
-let maplocalleader="\\"
-
-" Remove highlights with leader + enter
-nnoremap <Leader><CR> :nohlsearch<cr>
-
-" Move line down the file
-nnoremap <leader>_ ddp
-
-" Move line up a file
-nnoremap <leader>- ddkP
-
-" Delete line in insert mode
-inoremap <c-d> <esc>ddi
-
-" Edit my vimrc
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-
-" Source my vimrc
-nnoremap <leader>sv :source $MYVIMRC<cr>
-
-" Surround word in ".."
-nnoremap <leader>" viW<esc>a"<esc>hbi"<esc>lel
-
-" Surround word in '..'
-nnoremap <leader>' viW<esc>a'<esc>hbi'<esc>lel
-
-" Remap jk to <esc>
-inoremap jk <esc>
-inoremap fd <esc>
-" inoremap <esc> <nop>
-
-" Navigate between splits with leader
-nnoremap <leader>h <c-w><c-h>
-nnoremap <leader>j <c-w><c-j>
-nnoremap <leader>k <c-w><c-k>
-nnoremap <leader>l <c-w><c-l>
-
-" Copy to clipboard
-vnoremap <C-C> "+y
-
-" Disable Ex mode
-nnoremap Q <nop>
-
-" Easier exiting
-" nnoremap <leader>q :q<cr>
-" nnoremap <leader>Q :q!<cr>
-
-" Reload syntax highlighting
-nnoremap <leader>r :syntax sync fromstart<cr>
-
-" Omnicompletion on <c-o>
-inoremap <c-o> <c-x><c-o>
-
-" :W for write with sudo
-command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
-command! Wtest :execute 'w !sudo tee % > /dev/null' | :edit!
-
-" %%/ as current directory
-cabbr <expr> %% expand('%:p:h')
-
-" Fugitive git bindings
-nnoremap <space>ga :Git add %:p<cr><cr>
-nnoremap <space>gs :Gstatus<cr>
-"nnoremap <space>gc :Gcommit -v -q<cr>
-"nnoremap <space>gt :Gcommit -v -q %:p<cr>
-"nnoremap <space>gd :Gdiff<cr>
-"nnoremap <space>ge :Gedit<cr>
-"nnoremap <space>gr :Gread<cr>
-"nnoremap <space>gw :Gwrite<cr><cr>
-"nnoremap <space>gl :silent! Glog<cr>:bot copen<cr>
-"nnoremap <space>gp :Ggrep<space>
-"nnoremap <space>gm :Gmove<space>
-"nnoremap <space>gb :Git branch<space>
-"nnoremap <space>go :Git checkout<space>
-"nnoremap <space>gps :Dispatch! git push<cr>
-"nnoremap <space>gpl :Dispatch! git pull<cr>
-
-
-" }}}
 
 " NERDtree settings ---{{{
 

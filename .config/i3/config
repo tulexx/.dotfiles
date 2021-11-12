@@ -37,7 +37,7 @@ assign [class="java-lang-Thread" title="win0"] $ws4
 assign [class="Wine" instance="Navicat.exe"] $ws5
 assign [class="Ferdi"] $ws6
 assign [class="Microsoft Teams - Preview"] $ws6
-assign [class="KeePassXC"] $ws1
+assign [class="KeePassXC"] $ws6
 
 no_focus [class="java-lang-Thread" title="win0"]
 no_focus [class="Chromium-browser"]

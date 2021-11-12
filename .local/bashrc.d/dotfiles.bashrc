@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+SCRIPT_SHELL=$(readlink /proc/$$/exe) && [ "${SCRIPT_SHELL#/usr/bin/}" != "bash" ] && return # not bash 
 
 shopt -s expand_aliases
 
