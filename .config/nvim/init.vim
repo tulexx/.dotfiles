@@ -105,7 +105,7 @@ Plug 'tmux-plugins/vim-tmux' " Integration with tmux
 Plug 'vim-airline/vim-airline' " Airline
 Plug 'vim-airline/vim-airline-themes' " Airline themes
 
-Plug 'tpope/vim-fugitive' " Integration with git
+" Plug 'tpope/vim-fugitive' " Integration with git
 Plug 'tpope/vim-repeat' " Better . command
 Plug 'tpope/vim-surround' " Surrounding with things using s delimiter
 
