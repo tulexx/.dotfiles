@@ -2,6 +2,9 @@
 " General settings
 "
 
+" Enable norm command
+set noideadelaymacro
+
 " Fix the escape delay
 set timeoutlen=1000 ttimeoutlen=0
 
@@ -63,7 +66,10 @@ let mapleader=","
 " Change local leader to (\)
 let maplocalleader="\\"
 
-" Change undo and redo"
+" Reformat code
+nnoremap <leader>rc :action ReformatCode<cr>
+
+" Change undo and redo
 nnoremap u :action $Undo<cr>
 vnoremap u <esc>:action $Undo<cr>
 nnoremap <c-r> :action $Redo<cr>
@@ -80,6 +86,9 @@ nnoremap <c-h> :action PrevSplitter<cr>
 
 " Show git blame
 nnoremap <leader>y :action Annotate<cr>
+
+" Reformat code
+nnoremap <leader>f :action ReformatCode<cr>
 
 " Close tab with ctrl-w
 nnoremap <c-w> :q<cr>

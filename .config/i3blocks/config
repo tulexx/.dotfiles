@@ -29,9 +29,9 @@ markup=pango
 # [test]
 # interval=1
 
-# [weather]
-# command=curl wttr.in?format=2
-# interval=7200
+[weather]
+command=curl wttr.in?format=2
+interval=7200
 
 [gmail]
 interval=120
