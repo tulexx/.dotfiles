@@ -7,7 +7,7 @@ export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 export ICEAUTHORITY="$XDG_CONFIG_HOME"/ICEauthority
 
 # Set terminal variable
-export TERMINAL=xfce4-terminal
+export TERMINAL=kitty
 
 # Set browser variable
 export BROWSER=chromium-browser
