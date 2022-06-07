@@ -3,5 +3,8 @@
     "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
     "vscode-neovim.neovimInitVimPaths.linux": "/home/tulexx/.config/nvim/init.vim",
     "files.autoSave": "onFocusChange",
-    "security.workspace.trust.enabled": false
+    "security.workspace.trust.enabled": false,
+    "workbench.statusBar.visible": false,
+    "redhat.telemetry.enabled": false,
+    "editor.lineNumbers": "relative"
 }

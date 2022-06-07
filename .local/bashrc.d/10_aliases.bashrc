@@ -1,29 +1,34 @@
 #!/usr/bin/env bash
 
-alias \
-  ls='ls --color=auto' \
-  ll="ls -l" \
-  la="ls -alh" \
-  lah="ls -alh" \
-  grep='grep --color=auto' \
-  fgrep='fgrep --color=auto' \
-  egrep='egrep --color=auto' \
-  ..='cd ..' \
-  ...='cd ../..' \
-  ....='cd ../../..' \
-  !!='sudo !!' \
-  cls='clear' \
-  gs="git status" \
-  ga="git add" \
-  gc="git commit" \
-  gl="git log" \
-  gp="git push" \
-  glist="git stash list" \
-  vim="nvim"
+alias ls='ls --color=auto'
+alias ll="ls -l"
+alias la="ls -alh"
+alias lah="ls -alh"
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias !!='sudo !!'
+alias cls='clear'
+alias vim="nvim"
+
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gl="git log"
+alias gp="git push"
+alias glist="git stash list"
 
 # Private aliases
-privateAliases="$HOME/.bash_private_aliases"
-if [ -e "$privateAliases" ]
-then
-  . "$privateAliases"
-fi
+
+## Backwards compatibility
+[ -e "$HOME/.bash_private_aliases" ] && . "$HOME/.bash_private_aliases"
+
+currentDir=$(dirname -- "$( readlink -f -- "$0" )")
+for alias in "$currentDir"/*.alias
+do
+  [ -f "$alias" ] || continue
+  . "$alias"
+done
