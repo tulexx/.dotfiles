@@ -85,8 +85,6 @@ nnoremap <space>gs :Gstatus<cr>
 " }}}
 
 if !exists('g:vscode')
-" Keyboard remapping ---{{{
-" }}}
 " vim-plug settings and plugins ------{{{
 
 set nocompatible " required
