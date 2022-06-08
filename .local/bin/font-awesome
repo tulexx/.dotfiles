@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-choice=$(cat $HOME/.config/fontawesome.list | awk '{ print $1 " " $2 }'| rofi -dmenu -p 'Character' | awk '{ print $1 }')
-if [[ $choice ]]
-then
-  echo $choice | tr -d '\n' | xclip -selection clipboard
-  notify-send "$choice copied"
-fi

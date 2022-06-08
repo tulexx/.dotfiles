@@ -60,7 +60,7 @@ bindsym $mod+Shift+q kill
 bindsym Print exec i3-screenshooter
 bindsym $mod+Shift+p exec i3-shutdowner
 bindsym control+$alt+l exec i3-lock
-bindsym $mod+Shift+f exec font-awesome
+bindsym $mod+Shift+f exec emoji
 bindsym $mod+Shift+m exec i3-monitors
 
 # start dmenu (a program launcher)

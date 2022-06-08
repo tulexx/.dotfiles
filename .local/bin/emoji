@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+choice=$(cat "$HOME/.local/share/emoji/emoji.txt" "$HOME/.local/share/emoji/fontawesome.txt" | awk '{ print $1 " " substr($0, 2) }' | rofi -dmenu -i -p 'Character' | awk '{ print $1 }')
+
+if [[ $choice ]]
+then
+  echo "$choice" | tr -d '\n' | xclip -selection clipboard
+  notify-send "$choice copied"
+fi

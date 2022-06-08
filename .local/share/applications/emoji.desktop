@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=emoji
+Comment=Emoji chooser
+Icon=utilities-terminal
+Terminal=false
+Exec=emoji
+Categories=System
