@@ -1,10 +1,17 @@
 {
     "workbench.colorTheme": "Default Dark+",
+    "workbench.tree.indent": 15,
+    "workbench.colorCustomizations": {
+        "tree.indentGuidesStroke": "#ff0000"
+    },
+    "workbench.statusBar.visible": false,
+    "workbench.editor.untitled.hint": "hidden",
+
     "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
     "vscode-neovim.neovimInitVimPaths.linux": "/home/tulexx/.config/nvim/init.vim",
+
     "files.autoSave": "onFocusChange",
     "security.workspace.trust.enabled": false,
-    "workbench.statusBar.visible": false,
     "redhat.telemetry.enabled": false,
-    "editor.lineNumbers": "relative"
+    "editor.lineNumbers": "relative",
 }
