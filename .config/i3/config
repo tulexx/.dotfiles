@@ -32,6 +32,7 @@ assign [class="Wine" instance="Navicat.exe"] $ws5
 assign [class="Ferdi"] $ws6
 assign [class="Microsoft Teams - Preview"] $ws6
 assign [class="KeePassXC"] $ws6
+assign [class="keepassxc"] $ws6
 
 no_focus [class="java-lang-Thread" title="win0"]
 no_focus [class="Chromium-browser"]
@@ -42,7 +43,7 @@ exec_always --no-startup-id picom --experimental-backends --transparent-clipping
 
 include ~/.config/i3/local.conf
 
-font pango:DejaVu Sans Mono 9
+font pango:Hack Nerd Font Mono 9
 
 gaps inner 7
 

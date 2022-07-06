@@ -33,9 +33,6 @@ markup=pango
 command=curl wttr.in?format=2
 interval=7200
 
-# [gmail]
-# interval=120
-
 [volume]
 signal=10
 interval=once
