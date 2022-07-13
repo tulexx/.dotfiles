@@ -1,6 +1,6 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
-    {
+  {
       "command": "vscode-neovim.compositeEscape1",
       "key": "j",
       "when": "neovim.mode == insert && editorTextFocus",
@@ -33,8 +33,14 @@
       "command": "workbench.action.navigateDown"
     },
     {
+      "key": "ctrl+shift+a",
+      "command": "-editor.action.blockComment",
+      "when": "editorTextFocus && !editorReadonly"
+    },
+    {
       "key": "ctrl+/",
-      "command": "-vscode-neovim.send",
-      "when": "editorTextFocus && neovim.ctrlKeysNormal && neovim.init && neovim.mode != 'insert'"
-    }
+      "command": "vscode-neovim.send",
+      "when": "editorTextFocus && neovim.init",
+      "args": "<C-/>"
+  },
 ]

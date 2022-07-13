@@ -13,6 +13,7 @@ alias ....='cd ../../..'
 alias !!='sudo !!'
 alias cls='clear'
 alias vim="nvim"
+alias nb="newsboat"
 
 alias gs="git status"
 alias ga="git add"
