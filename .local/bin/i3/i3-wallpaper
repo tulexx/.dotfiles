@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+test -e "$XDG_CONFIG_HOME/wallpaper.jpg" || exit
+
+xwallpaper --stretch "$XDG_CONFIG_HOME/wallpaper.jpg" 

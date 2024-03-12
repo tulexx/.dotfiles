@@ -2,41 +2,17 @@
 " General settings
 "
 
-" Enable norm command
-set noideadelaymacro
-
 " Fix the escape delay
-set timeoutlen=1000 ttimeoutlen=0
+set timeoutlen=1000
 
 " Show commands in the status bar
 set showcmd
-
-" Completion in : commands
-set wildmenu
-
-" Ruler in the status menu
-set ruler
-
-" Tab indent is 4 spaces
-set tabstop=2
-
-" When indenting use 4 spaces
-set shiftwidth=2
-
-" Indent in a smart way
-set autoindent
-
-" Expand tabs to spaces
-set expandtab
 
 " Highlight all matches in text when searching
 set hlsearch
 
 " Search incrementally as you type
 set incsearch
-
-" Show matches for braces, parenthesis and such
-set showmatch
 
 " Ignore case when searching
 set ignorecase
@@ -47,14 +23,6 @@ set smartcase
 " Set numbers and relative numbers
 set number
 set relativenumber
-
-" Wrap visually but don't insert line breaks
-set wrap
-set textwidth=0
-set wrapmargin=0
-
-" Make backspace behave normally
-set backspace=2
 
 "
 " Keyboard remapping
@@ -106,6 +74,9 @@ nnoremap <Leader><CR> :nohlsearch<cr>
 " Move line down the file
 nnoremap <leader>_ ddp
 
+" Move line up the file
+nnoremap <leader>- ddkP
+
 " Delete line in insert mode
 inoremap <c-d> <esc>ddi
 
@@ -127,7 +98,8 @@ inoremap fd <esc>
 " inoremap <esc> <nop>
 
 " Copy to clipboard
-vnoremap <C-C> "+y
+" vnoremap <C-c> "+y
+vnoremap <C-c> :action $Copy<cr>
 
 " Compare git branch
 nnoremap <leader>com :action Git.CompareWithBranch<cr>
@@ -136,6 +108,6 @@ nnoremap <leader>com :action Git.CompareWithBranch<cr>
 nnoremap <leader>gen :action Generate<cr>
 
 " Toggle whitespace
-nnoremap <leader>w :action EditorToggleShowWhitespaces<cr>
+nnoremap <leader>w :action EditorToggleUseSoftWraps<cr>
 
 vnoremap U ~

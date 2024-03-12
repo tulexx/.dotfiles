@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-i3lock-fancy -- scrot -z &
+notify-send "Locking screen"
+
+i3lock-fancy -p -- scrot -z -o

@@ -37,9 +37,9 @@ interval=7200
 signal=10
 interval=once
 
-[battery]
-markup=pango
-interval=30
+#[battery]
+#markup=pango
+#interval=30
 
 [time]
 command=date '+%a %Y-%m-%d %H:%M '
